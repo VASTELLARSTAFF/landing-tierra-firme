@@ -7,7 +7,7 @@
 
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,700;1,9..40,300&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,700;9..40,800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
 <!-- Icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -19,9 +19,9 @@
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; font-size: 16px; }
 body {
-  font-family: 'Jost', sans-serif;
-  background: #0c0c0c;
-  color: #e8e2d9;
+  font-family: 'Inter', sans-serif;
+  background: #f5f5f3;
+  color: #111;
   overflow-x: hidden;
   cursor: none;
 }
@@ -31,25 +31,23 @@ body {
 =========================== */
 .cursor {
   width: 8px; height: 8px;
-  background: #fff;
+  background: #111;
   border-radius: 50%;
   position: fixed;
   top: 0; left: 0;
   pointer-events: none;
   z-index: 9999;
-  transition: transform 0.15s ease;
-  mix-blend-mode: difference;
+  transition: transform 0.1s ease;
 }
 .cursor-follower {
-  width: 36px; height: 36px;
-  border: 1px solid rgba(255,255,255,0.4);
+  width: 32px; height: 32px;
+  border: 1px solid rgba(0,0,0,0.3);
   border-radius: 50%;
   position: fixed;
   top: 0; left: 0;
   pointer-events: none;
   z-index: 9998;
-  transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1);
-  mix-blend-mode: difference;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 /* ===========================
@@ -63,14 +61,15 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 28px 60px;
-  transition: background 0.5s, padding 0.4s;
+  padding: 20px 50px;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(0,0,0,0.07);
+  transition: padding 0.4s, box-shadow 0.4s;
 }
 nav.scrolled {
-  background: rgba(10,10,10,0.92);
-  backdrop-filter: blur(16px);
-  padding: 18px 60px;
-  border-bottom: 1px solid rgba(255,255,255,0.06);
+  padding: 14px 50px;
+  box-shadow: 0 2px 30px rgba(0,0,0,0.08);
 }
 
 /* Logo */
@@ -80,10 +79,10 @@ nav.scrolled {
   gap: 12px;
   text-decoration: none;
   opacity: 0;
-  animation: navFade 1s ease 0.2s forwards;
+  animation: navFade 0.8s ease 0.1s forwards;
 }
 .nav-logo img {
-  height: 100px;
+  height: 42px;
   width: auto;
   filter: none;
 }
@@ -93,114 +92,141 @@ nav.scrolled {
   line-height: 1;
 }
 .nav-logo-text strong {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 19px;
-  font-weight: 600;
-  color: #fff;
-  letter-spacing: 0.5px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #111;
+  letter-spacing: -0.3px;
 }
 .nav-logo-text span {
   font-size: 9px;
-  letter-spacing: 3.5px;
+  letter-spacing: 3px;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.45);
+  color: rgba(0,0,0,0.4);
   margin-top: 3px;
   font-weight: 400;
 }
 
-/* Nav links */
+/* Nav center links */
 .nav-links {
   display: flex;
-  gap: 44px;
+  gap: 36px;
   opacity: 0;
-  animation: navFade 1s ease 0.4s forwards;
+  animation: navFade 0.8s ease 0.2s forwards;
 }
 .nav-links a {
-  color: rgba(255,255,255,0.7);
+  color: rgba(0,0,0,0.6);
   text-decoration: none;
-  font-size: 11px;
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
+  font-size: 13px;
   font-weight: 500;
+  letter-spacing: 0.3px;
   transition: color 0.3s;
   position: relative;
 }
 .nav-links a::after {
   content: '';
   position: absolute;
-  bottom: -4px; left: 0;
-  width: 0; height: 1px;
-  background: #fff;
+  bottom: -3px; left: 0;
+  width: 0; height: 1.5px;
+  background: #111;
   transition: width 0.3s;
 }
-.nav-links a:hover { color: #fff; }
+.nav-links a:hover { color: #111; }
 .nav-links a:hover::after { width: 100%; }
 
 /* Nav right */
 .nav-right {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 18px;
   opacity: 0;
-  animation: navFade 1s ease 0.6s forwards;
+  animation: navFade 0.8s ease 0.3s forwards;
 }
+
+/* Social icons in navbar */
+.nav-socials {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.nav-socials a {
+  color: rgba(0,0,0,0.4);
+  font-size: 14px;
+  text-decoration: none;
+  transition: color 0.3s, transform 0.3s;
+}
+.nav-socials a:hover { transform: scale(1.15); }
+.nav-socials a.linkedin:hover  { color: #0A66C2; }
+.nav-socials a.instagram:hover { color: #E1306C; }
+.nav-socials a.facebook:hover  { color: #1877F2; }
+
+.nav-sep {
+  width: 1px; height: 20px;
+  background: rgba(0,0,0,0.12);
+}
+
+/* Lang buttons */
 .lang-btns {
   display: flex;
-  gap: 4px;
+  gap: 2px;
 }
 .lang-btns button {
   background: transparent;
   border: none;
-  color: rgba(255,255,255,0.4);
-  font-family: 'Jost', sans-serif;
+  color: rgba(0,0,0,0.4);
+  font-family: 'Inter', sans-serif;
   font-size: 11px;
-  letter-spacing: 2px;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
   cursor: none;
   padding: 4px 6px;
   transition: color 0.3s;
+  font-weight: 500;
 }
-.lang-btns button.active { color: #fff; }
-.lang-btns .sep { color: rgba(255,255,255,0.2); font-size: 11px; line-height: 1.8; }
+.lang-btns button.active { color: #111; font-weight: 700; }
+.lang-btns .sep { color: rgba(0,0,0,0.2); font-size: 11px; line-height: 1.8; }
 
-.btn-brief {
-  padding: 11px 26px;
-  border: 1px solid rgba(255,255,255,0.6);
+/* CTA button nav */
+.btn-nav {
+  padding: 10px 22px;
+  background: #111;
   color: #fff;
   text-decoration: none;
-  font-size: 11px;
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
-  font-weight: 500;
-  transition: all 0.35s;
-  font-family: 'Jost', sans-serif;
+  font-size: 12px;
+  letter-spacing: 1px;
+  font-weight: 600;
+  border-radius: 4px;
+  transition: all 0.3s;
+  font-family: 'Inter', sans-serif;
+  white-space: nowrap;
 }
-.btn-brief:hover {
-  background: #fff;
-  color: #0c0c0c;
-}
+.btn-nav:hover { background: #333; }
 
 @keyframes navFade {
-  from { opacity: 0; transform: translateY(-10px); }
+  from { opacity: 0; transform: translateY(-8px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
 /* ===========================
-   HERO
+   HERO — framed video style
 =========================== */
+.hero-wrapper {
+  padding: 100px 40px 40px;
+  background: #f5f5f3;
+}
+
 .hero {
   position: relative;
   width: 100%;
-  height: 100vh;
-  min-height: 700px;
+  height: calc(100vh - 140px);
+  min-height: 560px;
+  border-radius: 16px;
+  overflow: hidden;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
 }
 
-/* Video background */
 .hero-video {
   position: absolute;
   inset: 0;
@@ -210,363 +236,420 @@ nav.scrolled {
   z-index: 0;
 }
 
-/* Fallback gradient when no video */
-.hero-fallback {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(160deg, #1a1f2e 0%, #0d1117 40%, #0c1a10 100%);
-  z-index: 0;
-}
-
-/* Cinematic overlay — darkens edges, lighter center */
 .hero-overlay {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 70% 70% at 50% 50%, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.65) 100%),
-    linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, transparent 30%, transparent 70%, rgba(0,0,0,0.5) 100%);
+    linear-gradient(135deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.45) 100%);
   z-index: 1;
 }
 
-/* Grain texture */
-.hero-grain {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  opacity: 0.04;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-  background-size: 180px;
-}
-
-/* Hero content */
 .hero-content {
   position: relative;
-  z-index: 3;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 0;
+  padding: 0 40px;
 }
 
-.hero-eyebrow {
-  font-size: 10px;
-  letter-spacing: 5px;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.5);
-  font-weight: 400;
-  margin-bottom: 32px;
-  opacity: 0;
-  animation: heroFadeUp 1.4s cubic-bezier(0.22, 1, 0.36, 1) 1.2s forwards;
-}
-
-/* BIG centered name — like Araya */
+/* BIG initials — GTF S.A. */
 .hero-title {
   font-family: 'DM Sans', sans-serif;
-  font-size: clamp(2.6rem, 4.5vw, 4.8rem);
-  font-weight: 700;
-  line-height: 1;
-  color: rgba(255,255,255,0.93);
-  letter-spacing: -1.5px;
-  white-space: nowrap;
+  font-size: clamp(5rem, 14vw, 16rem);
+  font-weight: 800;
+  line-height: 0.9;
+  color: rgba(255,255,255,0.92);
+  letter-spacing: -4px;
   opacity: 0;
-  animation: heroReveal 2s cubic-bezier(0.22, 1, 0.36, 1) 0.4s forwards;
+  animation: heroReveal 2s cubic-bezier(0.22, 1, 0.36, 1) 0.5s forwards;
   pointer-events: none;
   user-select: none;
 }
-.hero-title em {
-  font-style: normal;
+.hero-title .sa {
+  font-size: 0.38em;
   font-weight: 300;
   font-family: 'Inter', sans-serif;
-  color: rgba(255,255,255,0.65);
-}
-.hero-title em {
-  font-style: italic;
-  font-weight: 300;
-  color: rgba(255,255,255,0.7);
+  letter-spacing: 8px;
+  color: rgba(255,255,255,0.55);
+  display: block;
+  margin-top: 10px;
+  text-align: center;
 }
 
-/* Subtitle line */
-.hero-sub {
-  font-size: 11px;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.45);
-  font-weight: 300;
-  margin-top: 36px;
-  opacity: 0;
-  animation: heroFadeUp 1.4s cubic-bezier(0.22, 1, 0.36, 1) 1.5s forwards;
-}
-.hero-sub .dot { margin: 0 14px; opacity: 0.4; }
-/* Tagline descriptivo debajo del título */
 .hero-tagline {
   font-family: 'Inter', sans-serif;
   font-size: clamp(0.9rem, 1.4vw, 1.1rem);
   font-weight: 300;
-  color: rgba(255,255,255,0.5);
-  max-width: 580px;
+  color: rgba(255,255,255,0.6);
+  max-width: 560px;
   line-height: 1.75;
   text-align: center;
-  margin-top: 20px;
-  letter-spacing: 0.1px;
+  margin-top: 28px;
   opacity: 0;
-  animation: heroFadeUp 1.4s cubic-bezier(0.22, 1, 0.36, 1) 1.35s forwards;
+  animation: heroFadeUp 1.4s ease 1.4s forwards;
 }
-/* CTA button */
+
 .hero-cta {
-  margin-top: 52px;
+  margin-top: 40px;
   opacity: 0;
-  animation: heroFadeUp 1.4s cubic-bezier(0.22, 1, 0.36, 1) 1.8s forwards;
+  animation: heroFadeUp 1.4s ease 1.8s forwards;
 }
 .btn-hero {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
-  padding: 16px 36px;
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.25);
-  border-radius: 40px;
-  color: #fff;
+  gap: 10px;
+  padding: 15px 34px;
+  background: #fff;
+  color: #111;
+  border-radius: 4px;
   text-decoration: none;
   font-size: 13px;
-  font-weight: 400;
-  letter-spacing: 1px;
-  backdrop-filter: blur(10px);
-  transition: all 0.4s;
-  font-family: 'Jost', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.3s;
+  font-family: 'Inter', sans-serif;
 }
 .btn-hero:hover {
-  background: rgba(255,255,255,0.15);
-  border-color: rgba(255,255,255,0.5);
-  gap: 18px;
-}
-.btn-hero span { font-size: 14px; transition: transform 0.3s; }
-.btn-hero:hover span { transform: translateX(3px); }
-
-/* Scroll indicator */
-.hero-scroll {
-  position: absolute;
-  bottom: 40px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 3;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  opacity: 0;
-  animation: heroFadeUp 1s ease 2.5s forwards;
-}
-.scroll-line {
-  width: 1px;
-  height: 50px;
-  background: linear-gradient(to bottom, rgba(255,255,255,0.5), transparent);
-  animation: scrollPulse 2s ease infinite;
-}
-@keyframes scrollPulse {
-  0%, 100% { opacity: 0.4; transform: scaleY(1); }
-  50% { opacity: 1; transform: scaleY(0.6); }
+  background: #f0f0f0;
+  gap: 16px;
 }
 
-/* Bottom stats bar — like Araya's tagline row */
-.hero-stats {
+/* Bottom bar inside hero */
+.hero-bottom {
   position: absolute;
-  bottom: 44px; left: 0; right: 0;
-  z-index: 3;
+  bottom: 28px; left: 36px; right: 36px;
+  z-index: 2;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0;
-  font-size: 10px;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.4);
+  justify-content: space-between;
+  align-items: flex-end;
   opacity: 0;
   animation: heroFadeUp 1s ease 2.2s forwards;
 }
-.hero-stats .stat-dot {
-  margin: 0 20px;
-  width: 3px; height: 3px;
-  background: rgba(255,255,255,0.3);
-  border-radius: 50%;
-  display: inline-block;
+.hero-bottom-left {
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+  font-weight: 300;
+  line-height: 1.6;
+}
+.hero-bottom-right {
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  text-align: right;
+  line-height: 1.6;
 }
 
 @keyframes heroReveal {
-  from { opacity: 0; transform: translateY(60px) scale(0.95); filter: blur(8px); }
+  from { opacity: 0; transform: translateY(50px) scale(0.97); filter: blur(6px); }
   to   { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
 }
 @keyframes heroFadeUp {
-  from { opacity: 0; transform: translateY(25px); }
+  from { opacity: 0; transform: translateY(20px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
 /* ===========================
-   SECTIONS
+   SECTIONS — light bg
 =========================== */
 .section {
-  padding: 130px 80px;
-  max-width: 1400px;
+  padding: 110px 80px;
+  max-width: 1300px;
   margin: 0 auto;
   opacity: 0;
-  transform: translateY(50px);
+  transform: translateY(40px);
   transition: opacity 0.9s ease, transform 0.9s ease;
 }
-.section.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+.section.visible { opacity: 1; transform: translateY(0); }
 
 .section-label {
   font-size: 10px;
   letter-spacing: 5px;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.35);
-  margin-bottom: 20px;
+  color: rgba(0,0,0,0.35);
+  margin-bottom: 16px;
   display: block;
+  font-weight: 500;
 }
 .section-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(2.4rem, 5vw, 4.2rem);
-  font-weight: 300;
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  font-weight: 700;
   line-height: 1.1;
-  color: #fff;
-  margin-bottom: 28px;
+  color: #111;
+  margin-bottom: 20px;
+  letter-spacing: -1px;
 }
-.section-title em { font-style: italic; color: rgba(255,255,255,0.6); }
+.section-title em {
+  font-style: normal;
+  font-weight: 300;
+  color: rgba(0,0,0,0.45);
+}
 .section-body {
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.85;
-  color: rgba(255,255,255,0.45);
+  color: rgba(0,0,0,0.5);
   max-width: 560px;
   font-weight: 300;
 }
 .divider {
-  width: 40px; height: 1px;
-  background: rgba(255,255,255,0.2);
-  margin: 30px 0;
+  width: 40px; height: 2px;
+  background: #111;
+  margin: 24px 0;
+  opacity: 0.15;
 }
 
 /* ===========================
-   ABOUT — split layout
+   ABOUT — image + text
 =========================== */
 #about .inner {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 100px;
+  gap: 80px;
   align-items: center;
 }
+.about-image {
+  border-radius: 10px;
+  overflow: hidden;
+  aspect-ratio: 4/3;
+}
+.about-image img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+.about-image:hover img { transform: scale(1.04); }
+
 .stats-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2px;
-  margin-top: 0;
+  gap: 16px;
+  margin-top: 36px;
 }
 .stat-block {
-  padding: 36px 32px;
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.05);
-  transition: background 0.3s;
+  padding: 28px 24px;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: 8px;
+  transition: box-shadow 0.3s;
 }
-.stat-block:hover { background: rgba(255,255,255,0.06); }
+.stat-block:hover { box-shadow: 0 8px 30px rgba(0,0,0,0.07); }
 .stat-block strong {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 3rem;
-  font-weight: 300;
-  color: #fff;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: #111;
   display: block;
   line-height: 1;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
+  letter-spacing: -1px;
 }
 .stat-block span {
   font-size: 11px;
-  letter-spacing: 2px;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.35);
+  color: rgba(0,0,0,0.4);
+  font-weight: 500;
 }
 
 /* ===========================
-   SERVICES
+   SERVICES — image grid
 =========================== */
 #services {
-  max-width: 1400px;
+  padding: 110px 80px;
+  max-width: 1300px;
   margin: 0 auto;
-  padding: 130px 80px;
-  border-top: 1px solid rgba(255,255,255,0.05);
   opacity: 0;
-  transform: translateY(50px);
+  transform: translateY(40px);
   transition: opacity 0.9s ease, transform 0.9s ease;
 }
 #services.visible { opacity: 1; transform: translateY(0); }
-#services .header { margin-bottom: 70px; }
+#services .header { margin-bottom: 60px; }
 
-.services-list { display: flex; flex-direction: column; }
-.service-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 32px 0;
-  border-top: 1px solid rgba(255,255,255,0.07);
-  gap: 40px;
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.service-card {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  aspect-ratio: 3/4;
   cursor: none;
-  transition: all 0.3s;
-  text-decoration: none;
-  color: inherit;
 }
-.service-row:last-child { border-bottom: 1px solid rgba(255,255,255,0.07); }
-.service-row:hover { padding-left: 20px; }
-.service-row:hover .service-name { color: #fff; }
-.service-row:hover .service-arrow { opacity: 1; transform: translateX(0); }
-
-.service-num {
-  font-size: 11px;
-  color: rgba(255,255,255,0.2);
-  letter-spacing: 2px;
-  min-width: 36px;
+.service-card img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
 }
-.service-name {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(1.6rem, 3vw, 2.6rem);
-  font-weight: 300;
-  color: rgba(255,255,255,0.7);
-  flex: 1;
-  transition: color 0.3s;
+.service-card:hover img { transform: scale(1.06); }
+.service-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.1) 60%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 28px 24px;
+  transition: background 0.4s;
 }
-.service-desc {
-  font-size: 13px;
-  color: rgba(255,255,255,0.3);
-  max-width: 320px;
-  text-align: right;
-  line-height: 1.6;
+.service-card:hover .service-card-overlay {
+  background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.2) 60%);
 }
-.service-arrow {
-  font-size: 18px;
+.service-card-num {
+  font-size: 10px;
+  letter-spacing: 3px;
   color: rgba(255,255,255,0.5);
-  opacity: 0;
-  transform: translateX(-10px);
-  transition: all 0.3s;
+  margin-bottom: 8px;
+  font-weight: 500;
 }
+.service-card-name {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 8px;
+  letter-spacing: -0.3px;
+}
+.service-card-desc {
+  font-size: 13px;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.6;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+.service-card:hover .service-card-desc { max-height: 80px; }
+
+/* Large card for last row */
+.service-card.wide {
+  grid-column: span 2;
+  aspect-ratio: unset;
+  height: 260px;
+}
+
+/* ===========================
+   PROJECTS
+=========================== */
+#projects {
+  background: #fff;
+  padding: 110px 80px;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+#projects.visible { opacity: 1; transform: translateY(0); }
+#projects .inner {
+  max-width: 1300px;
+  margin: 0 auto;
+}
+#projects .header { margin-bottom: 60px; }
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.project-card {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  aspect-ratio: 16/10;
+  cursor: none;
+}
+.project-card img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+.project-card:hover img { transform: scale(1.05); }
+.project-card-info {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 28px 28px 24px;
+  background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%);
+  color: #fff;
+}
+.project-tag {
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+  margin-bottom: 6px;
+}
+.project-name {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+}
+
+/* ===========================
+   ABOUT COMPANY
+=========================== */
+#empresa {
+  padding: 110px 80px;
+  max-width: 1300px;
+  margin: 0 auto;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+#empresa.visible { opacity: 1; transform: translateY(0); }
+#empresa .inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.empresa-image {
+  border-radius: 10px;
+  overflow: hidden;
+  aspect-ratio: 1;
+}
+.empresa-image img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+.empresa-image:hover img { transform: scale(1.04); }
 
 /* ===========================
    CONTACT
 =========================== */
-#contact .inner {
+#contacto {
+  background: #111;
+  padding: 110px 80px;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+#contacto.visible { opacity: 1; transform: translateY(0); }
+#contacto .inner {
+  max-width: 1300px;
+  margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 100px;
   align-items: start;
 }
-.contact-form {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
+#contacto .section-label { color: rgba(255,255,255,0.3); }
+#contacto .section-title { color: #fff; }
+#contacto .section-body { color: rgba(255,255,255,0.4); }
+#contacto .divider { background: rgba(255,255,255,0.15); opacity: 1; }
+
+.contact-form { display: flex; flex-direction: column; gap: 0; }
 .form-field {
   background: rgba(255,255,255,0.06);
   border: 1px solid rgba(255,255,255,0.1);
   border-radius: 6px;
   padding: 16px 20px;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -576,13 +659,13 @@ nav.scrolled {
   background: rgba(255,255,255,0.1);
   border-color: rgba(255,255,255,0.35);
 }
-.form-field:focus-within { border-color: rgba(255,255,255,0.4); }
 .form-field label {
   font-size: 10px;
   letter-spacing: 3px;
   text-transform: uppercase;
   color: rgba(255,255,255,0.3);
   transition: color 0.3s;
+  font-weight: 500;
 }
 .form-field:focus-within label { color: rgba(255,255,255,0.7); }
 .form-field input,
@@ -591,124 +674,145 @@ nav.scrolled {
   border: none;
   outline: none;
   color: #fff;
-  font-family: 'Jost', sans-serif;
-  font-size: 16px;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
   font-weight: 300;
-  padding: 4px 0;
+  padding: 2px 0;
   resize: none;
 }
-.form-field textarea { min-height: 100px; }
+.form-field textarea { min-height: 90px; }
 .form-field input::placeholder,
 .form-field textarea::placeholder { color: rgba(255,255,255,0.15); }
 
 .btn-submit {
-  margin-top: 40px;
+  margin-top: 8px;
   display: inline-flex;
   align-items: center;
-  gap: 14px;
-  background: transparent;
-  border: 1px solid rgba(255,255,255,0.3);
-  color: #fff;
-  font-family: 'Jost', sans-serif;
-  font-size: 12px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  padding: 18px 40px;
+  gap: 12px;
+  background: #fff;
+  color: #111;
+  border: none;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  letter-spacing: 1px;
+  font-weight: 600;
+  padding: 16px 36px;
+  border-radius: 4px;
   cursor: none;
-  transition: all 0.4s;
+  transition: all 0.3s;
   align-self: flex-start;
 }
-.btn-submit:hover { background: #fff; color: #0c0c0c; gap: 20px; }
+.btn-submit:hover { background: #e8e8e8; gap: 18px; }
 
 /* ===========================
-   SOCIAL SIDEBAR
+   WHATSAPP BUBBLE
 =========================== */
-.social-sidebar {
+.whatsapp-bubble {
   position: fixed;
-  left: 28px;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 500;
+  right: 28px; bottom: 32px;
+  z-index: 900;
   display: flex;
   flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+}
+.wa-chat-box {
+  background: #fff;
+  border-radius: 12px 12px 0 12px;
+  padding: 14px 18px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+  max-width: 220px;
+  display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 12px;
+  opacity: 0;
+  transform: translateY(10px) scale(0.95);
+  transition: all 0.4s ease;
+  pointer-events: none;
 }
-.social-sidebar::before,
-.social-sidebar::after {
-  content: '';
-  width: 1px; height: 60px;
-  background: rgba(255,255,255,0.1);
+.wa-chat-box.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: all;
 }
-.social-sidebar a { font-size: 15px; text-decoration: none; transition: all 0.3s; color: rgba(255,255,255,0.3); }
-.social-sidebar a:hover { transform: scale(1.2); }
-.social-sidebar a.linkedin:hover  { color: #0A66C2; }
-.social-sidebar a.instagram:hover { color: #E1306C; }
-.social-sidebar a.facebook:hover  { color: #1877F2; }
-.social-sidebar a:hover { color: rgba(255,255,255,0.9); transform: scale(1.2); }
-
-/* ===========================
-   WHATSAPP
-=========================== */
-.whatsapp-float {
-  position: fixed;
-  right: 28px; bottom: 36px;
-  z-index: 500;
+.wa-avatar {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: #25D366;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-size: 16px;
+  flex-shrink: 0;
+}
+.wa-text { font-size: 13px; color: #333; line-height: 1.4; }
+.wa-text strong { display: block; font-size: 12px; font-weight: 600; color: #111; }
+.wa-close {
+  position: absolute;
+  top: 8px; right: 10px;
+  font-size: 14px; color: #999;
+  cursor: none; line-height: 1;
+}
+.wa-btn {
   width: 54px; height: 54px;
   background: #25D366;
   border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
-  color: #fff; font-size: 24px;
+  color: #fff; font-size: 26px;
   text-decoration: none;
-  box-shadow: 0 6px 28px rgba(37,211,102,0.35);
+  box-shadow: 0 6px 24px rgba(37,211,102,0.4);
   transition: transform 0.3s, box-shadow 0.3s;
 }
-.whatsapp-float:hover {
+.wa-btn:hover {
   transform: scale(1.1);
-  box-shadow: 0 10px 36px rgba(37,211,102,0.55);
+  box-shadow: 0 8px 32px rgba(37,211,102,0.6);
 }
 
 /* ===========================
    FOOTER
 =========================== */
 footer {
-  border-top: 1px solid rgba(255,255,255,0.05);
-  padding: 50px 80px;
+  background: #111;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 40px 80px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1400px;
-  margin: 0 auto;
+  max-width: 100%;
 }
-footer .f-logo {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 18px;
-  color: rgba(255,255,255,0.4);
+.f-logo {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  color: rgba(255,255,255,0.3);
   font-weight: 300;
+  letter-spacing: -0.3px;
 }
 footer p {
   font-size: 11px;
   letter-spacing: 2px;
   color: rgba(255,255,255,0.2);
-  text-align: right;
 }
 
 /* ===========================
    RESPONSIVE
 =========================== */
 @media (max-width: 1000px) {
-  nav { padding: 20px 28px; }
+  nav { padding: 16px 24px; }
+  nav.scrolled { padding: 12px 24px; }
   .nav-links { display: none; }
-  nav.scrolled { padding: 16px 28px; }
-  .section { padding: 90px 28px; }
-  #services { padding: 90px 28px; }
-  #about .inner { grid-template-columns: 1fr; gap: 60px; }
-  #contact .inner { grid-template-columns: 1fr; gap: 60px; }
-  .hero-title { font-size: clamp(3.5rem, 13vw, 7rem); letter-spacing: -1px; }
-  .service-desc { display: none; }
-  footer { flex-direction: column; gap: 16px; text-align: center; }
-  footer p { text-align: center; }
-  .social-sidebar { display: none; }
+  .hero-wrapper { padding: 80px 16px 24px; }
+  .hero { height: 70vh; }
+  .hero-title { font-size: clamp(4rem, 18vw, 8rem); letter-spacing: -2px; }
+  .section, #services, #empresa { padding: 70px 24px; }
+  #projects, #contacto { padding: 70px 24px; }
+  #about .inner, #empresa .inner, #contacto .inner { grid-template-columns: 1fr; gap: 40px; }
+  .services-grid { grid-template-columns: 1fr 1fr; }
+  .service-card.wide { grid-column: span 2; }
+  .projects-grid { grid-template-columns: 1fr; }
+  footer { flex-direction: column; gap: 12px; padding: 32px 24px; }
+}
+@media (max-width: 600px) {
+  .services-grid { grid-template-columns: 1fr; }
+  .service-card.wide { grid-column: span 1; }
+  .nav-socials { display: none; }
 }
 </style>
 </head>
@@ -720,9 +824,8 @@ footer p {
 
 <!-- ===== NAV ===== -->
 <nav id="navbar">
-  <a href="#home" class="nav-logo">
-    <!-- Si tienes logo.png en tu repositorio, se mostrará aquí.
-         Si no existe el archivo, el texto de abajo funciona igual. -->
+
+  <a href="#inicio" class="nav-logo">
     <img src="./logo.png" alt="GTF" onerror="this.style.display='none'">
     <div class="nav-logo-text">
       <strong>Tierra Firme</strong>
@@ -731,117 +834,123 @@ footer p {
   </a>
 
   <div class="nav-links">
-    <a href="#about"    data-es="Nosotros"  data-en="About Us">Nosotros</a>
-    <a href="#services" data-es="Servicios" data-en="Services">Servicios</a>
-    <a href="#contact"  data-es="Contacto"  data-en="Contact">Contacto</a>
+    <a href="#inicio"   data-es="Inicio"      data-en="Home">Inicio</a>
+    <a href="#about"    data-es="Qué Hacemos" data-en="What We Do">Qué Hacemos</a>
+    <a href="#projects" data-es="Proyectos"   data-en="Projects">Proyectos</a>
+    <a href="#empresa"  data-es="Empresa"     data-en="Company">Empresa</a>
+    <a href="#contacto" data-es="Contacto"    data-en="Contact">Contacto</a>
   </div>
 
   <div class="nav-right">
+    <!-- Social icons in navbar -->
+    <div class="nav-socials">
+      <a href="#" class="linkedin" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      <a href="#" class="instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="#" class="facebook" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+    </div>
+
+    <div class="nav-sep"></div>
+
     <div class="lang-btns">
       <button id="btn-es" class="active" onclick="setLang('es')">ES</button>
       <span class="sep">/</span>
       <button id="btn-en" onclick="setLang('en')">EN</button>
     </div>
-    <a href="#contact" class="btn-brief"
-       data-es="Contáctanos" data-en="Get In Touch">Contáctanos</a>
+
+    <div class="nav-sep"></div>
+
+    <a href="#contacto" class="btn-nav"
+       data-es="Contáctanos" data-en="Let's Talk">Contáctanos</a>
   </div>
+
 </nav>
 
-<!-- ===== HERO ===== -->
-<section class="hero" id="home">
+<!-- ===== HERO — framed with white border =====-->
+<div class="hero-wrapper" id="inicio">
+  <div class="hero">
 
-  <!-- Video: reemplaza con tu video de GitHub -->
-  <video class="hero-video" autoplay muted loop playsinline>
-  <source src="https://streamable.com/l/7lvkwf/mp4.mp4">
-  </video>
+    <!-- Video de Streamable -->
+    <video class="hero-video" autoplay muted loop playsinline>
+      <source src="https://streamable.com/l/7lvkwf/mp4.mp4" type="video/mp4">
+    </video>
 
+    <div class="hero-overlay"></div>
 
-  <div class="hero-overlay"></div>
-  <div class="hero-grain"></div>
+    <div class="hero-content">
 
-  <div class="hero-content">
-    <p class="hero-eyebrow"
-       data-es="Excelencia · Visión · Crecimiento"
-       data-en="Excellence · Vision · Growth">
-      Excelencia · Visión · Crecimiento
-    </p>
+      <!-- Iniciales grandes GTF -->
+      <h1 class="hero-title">
+        GTF<span class="sa" data-es="S.A." data-en="S.A.">S.A.</span>
+      </h1>
 
-    <!-- Título grande al centro, estilo Araya -->
-    <h1 class="hero-title"
-    data-es="G T F S.A."
-    data-en="G T F S.A.">
-  G T F S.A.
-</h1>
-     <p class="hero-tagline"
-   data-es="Integramos conocimiento, recursos y experiencia para construir proyectos exitosos con impacto duradero."
-   data-en="We connect knowledge, capital and experience to develop projects that generate real impact and measurable results.">
-  Integramos conocimiento, recursos y experiencia para construir proyectos exitosos con impacto duradero.
-</p>
+      <p class="hero-tagline"
+         data-es="Conectamos conocimiento, capital y experiencia para desarrollar proyectos que generan impacto real y resultados medibles."
+         data-en="We connect knowledge, capital and experience to develop projects that generate real impact and measurable results.">
+        Conectamos conocimiento, capital y experiencia para desarrollar proyectos que generan impacto real y resultados medibles.
+      </p>
 
-    <p class="hero-sub">
-      <span class="dot"></span>
-      <span data-es="Grupo Empresarial" data-en="Business Group">Grupo Empresarial</span>
-      <span class="dot"></span>
-      <span data-es="Panamá" data-en="Panamá">Panamá</span>
-    </p>
+      <div class="hero-cta">
+        <a href="#contacto" class="btn-hero"
+           data-es="Hablemos →" data-en="Let's Talk →">
+          Hablemos →
+        </a>
+      </div>
 
-    <div class="hero-cta">
-      <a href="#contact" class="btn-hero"
-         data-es="Hablar con nosotros →" data-en="Get in touch →">
-        Hablar con nosotros <span>→</span>
-      </a>
     </div>
+
+    <!-- Bottom info bar inside hero frame -->
+    <div class="hero-bottom">
+      <div class="hero-bottom-left">
+        <span data-es="Grupo Tierra Firme" data-en="Grupo Tierra Firme">Grupo Tierra Firme</span><br>
+        <span data-es="Colombia · Est. 2009" data-en="Colombia · Est. 2009">Colombia · Est. 2009</span>
+      </div>
+      <div class="hero-bottom-right">
+        <span data-es="Construcción · Tecnología · Finanzas" data-en="Construction · Technology · Finance">Construcción · Tecnología · Finanzas</span><br>
+        <span data-es="Logística · Salud · Consultoría" data-en="Logistics · Healthcare · Advisory">Logística · Salud · Consultoría</span>
+      </div>
+    </div>
+
   </div>
+</div>
 
-  <!-- Stats bottom bar -->
-  <div class="hero-stats">
-    <span data-es="Construcción" data-en="Construction">Construcción</span>
-    <span class="stat-dot"></span>
-    <span data-es="Tecnología" data-en="Technology">Tecnología</span>
-    <span class="stat-dot"></span>
-    <span data-es="Finanzas" data-en="Finance">Finanzas</span>
-    <span class="stat-dot"></span>
-    <span data-es="Logística" data-en="Logistics">Logística</span>
-    <span class="stat-dot"></span>
-    <span data-es="Salud" data-en="Healthcare">Salud</span>
-  </div>
-
-</section>
-
-<!-- ===== ABOUT ===== -->
+<!-- ===== ABOUT — QUÉ HACEMOS ===== -->
 <section class="section" id="about">
   <div class="inner">
     <div>
-      <span class="section-label" data-es="01 — Quiénes Somos" data-en="01 — Who We Are">01 — Quiénes Somos</span>
+      <span class="section-label" data-es="01 — Qué Hacemos" data-en="01 — What We Do">01 — Qué Hacemos</span>
       <h2 class="section-title"
-          data-es="Un grupo con<br>visión <em>estratégica</em>"
-          data-en="A group with<br><em>strategic</em> vision">
-        Un grupo con<br>visión <em>estratégica</em>
+          data-es="Soluciones estratégicas <em>de alto impacto</em>"
+          data-en="Strategic solutions <em>of high impact</em>">
+        Soluciones estratégicas <em>de alto impacto</em>
       </h2>
       <div class="divider"></div>
       <p class="section-body"
-         data-es="Grupo Tierra Firme S.A. es un conglomerado empresarial multidisciplinario que entrega soluciones de alto impacto en múltiples industrias. Con más de una década de experiencia, combinamos rigor técnico con visión de largo plazo para construir el futuro."
-         data-en="Grupo Tierra Firme S.A. is a multidisciplinary business conglomerate delivering high-impact solutions across industries. With over a decade of experience, we combine technical rigor with long-term vision to build the future.">
-        Grupo Tierra Firme S.A. es un conglomerado empresarial multidisciplinario que entrega soluciones de alto impacto en múltiples industrias. Con más de una década de experiencia, combinamos rigor técnico con visión de largo plazo para construir el futuro.
+         data-es="Grupo Tierra Firme S.A. es un conglomerado empresarial multidisciplinario con más de 15 años transformando industrias. Combinamos rigor técnico, visión de largo plazo y redes estratégicas para generar valor sostenible."
+         data-en="Grupo Tierra Firme S.A. is a multidisciplinary business conglomerate with over 15 years transforming industries. We combine technical rigor, long-term vision and strategic networks to generate sustainable value.">
+        Grupo Tierra Firme S.A. es un conglomerado empresarial multidisciplinario con más de 15 años transformando industrias. Combinamos rigor técnico, visión de largo plazo y redes estratégicas para generar valor sostenible.
       </p>
+      <div class="stats-grid">
+        <div class="stat-block">
+          <strong>15+</strong>
+          <span data-es="Años de experiencia" data-en="Years of experience">Años de experiencia</span>
+        </div>
+        <div class="stat-block">
+          <strong>6</strong>
+          <span data-es="Sectores clave" data-en="Key sectors">Sectores clave</span>
+        </div>
+        <div class="stat-block">
+          <strong>200+</strong>
+          <span data-es="Proyectos exitosos" data-en="Successful projects">Proyectos exitosos</span>
+        </div>
+        <div class="stat-block">
+          <strong>3</strong>
+          <span data-es="Países de operación" data-en="Countries">Países de operación</span>
+        </div>
+      </div>
     </div>
-    <div class="stats-grid">
-      <div class="stat-block">
-        <strong>15+</strong>
-        <span data-es="Años de experiencia" data-en="Years of experience">Años de experiencia</span>
-      </div>
-      <div class="stat-block">
-        <strong>6</strong>
-        <span data-es="Sectores clave" data-en="Key sectors">Sectores clave</span>
-      </div>
-      <div class="stat-block">
-        <strong>200+</strong>
-        <span data-es="Proyectos exitosos" data-en="Successful projects">Proyectos exitosos</span>
-      </div>
-      <div class="stat-block">
-        <strong>3</strong>
-        <span data-es="Países de presencia" data-en="Countries">Países de presencia</span>
-      </div>
+    <div class="about-image">
+      <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=900&q=80&auto=format&fit=crop"
+           alt="Grupo Tierra Firme — Quiénes somos">
     </div>
   </div>
 </section>
@@ -849,79 +958,157 @@ footer p {
 <!-- ===== SERVICES ===== -->
 <section id="services">
   <div class="header">
-    <span class="section-label" data-es="02 — Lo Que Hacemos" data-en="02 — What We Do">02 — Lo Que Hacemos</span>
+    <span class="section-label" data-es="02 — Servicios" data-en="02 — Services">02 — Servicios</span>
     <h2 class="section-title"
-        data-es="Nuestros <em>Servicios</em>"
-        data-en="Our <em>Services</em>">
-      Nuestros <em>Servicios</em>
+        data-es="Lo que <em>ofrecemos</em>"
+        data-en="What we <em>offer</em>">
+      Lo que <em>ofrecemos</em>
     </h2>
   </div>
 
-  <div class="services-list">
+  <div class="services-grid">
 
-    <a href="#contact" class="service-row">
-      <span class="service-num">01</span>
-      <span class="service-name" data-es="Construcción" data-en="Construction">Construcción</span>
-      <span class="service-desc" data-es="Infraestructura de gran escala con estándares de calidad internacional." data-en="Large-scale infrastructure with international quality standards.">Infraestructura de gran escala con estándares de calidad internacional.</span>
-      <i class="fas fa-arrow-right service-arrow"></i>
-    </a>
+    <div class="service-card">
+      <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80&auto=format&fit=crop" alt="Construcción">
+      <div class="service-card-overlay">
+        <span class="service-card-num">01</span>
+        <div class="service-card-name" data-es="Construcción" data-en="Construction">Construcción</div>
+        <div class="service-card-desc" data-es="Infraestructura de gran escala con estándares internacionales." data-en="Large-scale infrastructure with international standards.">Infraestructura de gran escala con estándares internacionales.</div>
+      </div>
+    </div>
 
-    <a href="#contact" class="service-row">
-      <span class="service-num">02</span>
-      <span class="service-name" data-es="Tecnología" data-en="Technology">Tecnología</span>
-      <span class="service-desc" data-es="Soluciones digitales e innovación para empresas modernas." data-en="Digital solutions and innovation for modern enterprises.">Soluciones digitales e innovación para empresas modernas.</span>
-      <i class="fas fa-arrow-right service-arrow"></i>
-    </a>
+    <div class="service-card">
+      <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80&auto=format&fit=crop" alt="Tecnología">
+      <div class="service-card-overlay">
+        <span class="service-card-num">02</span>
+        <div class="service-card-name" data-es="Tecnología" data-en="Technology">Tecnología</div>
+        <div class="service-card-desc" data-es="Soluciones digitales e innovación para empresas modernas." data-en="Digital solutions and innovation for modern enterprises.">Soluciones digitales e innovación para empresas modernas.</div>
+      </div>
+    </div>
 
-    <a href="#contact" class="service-row">
-      <span class="service-num">03</span>
-      <span class="service-name" data-es="Salud" data-en="Healthcare">Salud</span>
-      <span class="service-desc" data-es="Servicios de salud con enfoque en calidad y accesibilidad." data-en="Healthcare services focused on quality and accessibility.">Servicios de salud con enfoque en calidad y accesibilidad.</span>
-      <i class="fas fa-arrow-right service-arrow"></i>
-    </a>
+    <div class="service-card">
+      <img src="https://images.unsplash.com/photo-1559757175-5700dde675bc?w=600&q=80&auto=format&fit=crop" alt="Salud">
+      <div class="service-card-overlay">
+        <span class="service-card-num">03</span>
+        <div class="service-card-name" data-es="Salud" data-en="Healthcare">Salud</div>
+        <div class="service-card-desc" data-es="Servicios de salud con enfoque en calidad y accesibilidad." data-en="Healthcare services focused on quality and accessibility.">Servicios de salud con enfoque en calidad y accesibilidad.</div>
+      </div>
+    </div>
 
-    <a href="#contact" class="service-row">
-      <span class="service-num">04</span>
-      <span class="service-name" data-es="Finanzas" data-en="Finance">Finanzas</span>
-      <span class="service-desc" data-es="Asesoría financiera y gestión de inversiones sólidas." data-en="Financial advisory and solid investment management.">Asesoría financiera y gestión de inversiones sólidas.</span>
-      <i class="fas fa-arrow-right service-arrow"></i>
-    </a>
+    <div class="service-card wide">
+      <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=900&q=80&auto=format&fit=crop" alt="Finanzas">
+      <div class="service-card-overlay">
+        <span class="service-card-num">04</span>
+        <div class="service-card-name" data-es="Finanzas" data-en="Finance">Finanzas</div>
+        <div class="service-card-desc" data-es="Asesoría financiera y gestión de inversiones sólidas." data-en="Financial advisory and solid investment management.">Asesoría financiera y gestión de inversiones sólidas.</div>
+      </div>
+    </div>
 
-    <a href="#contact" class="service-row">
-      <span class="service-num">05</span>
-      <span class="service-name" data-es="Logística" data-en="Logistics">Logística</span>
-      <span class="service-desc" data-es="Cadenas de suministro eficientes a nivel nacional." data-en="Efficient supply chains at national scale.">Cadenas de suministro eficientes a nivel nacional.</span>
-      <i class="fas fa-arrow-right service-arrow"></i>
-    </a>
+    <div class="service-card">
+      <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&q=80&auto=format&fit=crop" alt="Logística">
+      <div class="service-card-overlay">
+        <span class="service-card-num">05</span>
+        <div class="service-card-name" data-es="Logística" data-en="Logistics">Logística</div>
+        <div class="service-card-desc" data-es="Cadenas de suministro eficientes a nivel nacional." data-en="Efficient supply chains at national scale.">Cadenas de suministro eficientes a nivel nacional.</div>
+      </div>
+    </div>
 
-    <a href="#contact" class="service-row">
-      <span class="service-num">06</span>
-      <span class="service-name" data-es="Consultoría" data-en="Advisory">Consultoría</span>
-      <span class="service-desc" data-es="Acompañamiento estratégico en procesos de transformación." data-en="Strategic support in transformation processes.">Acompañamiento estratégico en procesos de transformación.</span>
-      <i class="fas fa-arrow-right service-arrow"></i>
-    </a>
+    <div class="service-card wide">
+      <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=900&q=80&auto=format&fit=crop" alt="Consultoría">
+      <div class="service-card-overlay">
+        <span class="service-card-num">06</span>
+        <div class="service-card-name" data-es="Consultoría" data-en="Advisory">Consultoría</div>
+        <div class="service-card-desc" data-es="Acompañamiento estratégico en procesos de transformación." data-en="Strategic support in transformation processes.">Acompañamiento estratégico en procesos de transformación.</div>
+      </div>
+    </div>
 
   </div>
 </section>
 
-<!-- ===== CONTACT ===== -->
-<section class="section" id="contact">
+<!-- ===== PROJECTS ===== -->
+<section id="projects">
   <div class="inner">
-    <div>
-      <span class="section-label" data-es="03 — Contacto" data-en="03 — Contact">03 — Contacto</span>
+    <div class="header">
+      <span class="section-label" data-es="03 — Proyectos" data-en="03 — Projects">03 — Proyectos</span>
       <h2 class="section-title"
-          data-es="¿Listo para<br><em>comenzar?</em>"
-          data-en="Ready to<br><em>get started?</em>">
-        ¿Listo para<br><em>comenzar?</em>
+          data-es="Nuestro <em>portafolio</em>"
+          data-en="Our <em>portfolio</em>">
+        Nuestro <em>portafolio</em>
+      </h2>
+    </div>
+    <div class="projects-grid">
+      <div class="project-card">
+        <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&q=80&auto=format&fit=crop" alt="Proyecto 1">
+        <div class="project-card-info">
+          <div class="project-tag" data-es="Construcción · 2023" data-en="Construction · 2023">Construcción · 2023</div>
+          <div class="project-name" data-es="Torre Empresarial Bogotá" data-en="Bogotá Business Tower">Torre Empresarial Bogotá</div>
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80&auto=format&fit=crop" alt="Proyecto 2">
+        <div class="project-card-info">
+          <div class="project-tag" data-es="Tecnología · 2024" data-en="Technology · 2024">Tecnología · 2024</div>
+          <div class="project-name" data-es="Plataforma Digital GTF" data-en="GTF Digital Platform">Plataforma Digital GTF</div>
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="https://images.unsplash.com/photo-1559757175-5700dde675bc?w=800&q=80&auto=format&fit=crop" alt="Proyecto 3">
+        <div class="project-card-info">
+          <div class="project-tag" data-es="Salud · 2023" data-en="Healthcare · 2023">Salud · 2023</div>
+          <div class="project-name" data-es="Centro Médico Regional" data-en="Regional Medical Center">Centro Médico Regional</div>
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80&auto=format&fit=crop" alt="Proyecto 4">
+        <div class="project-card-info">
+          <div class="project-tag" data-es="Logística · 2024" data-en="Logistics · 2024">Logística · 2024</div>
+          <div class="project-name" data-es="Red de Distribución Nacional" data-en="National Distribution Network">Red de Distribución Nacional</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== EMPRESA ===== -->
+<section id="empresa">
+  <div class="inner">
+    <div class="empresa-image">
+      <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=800&q=80&auto=format&fit=crop" alt="Nuestro equipo">
+    </div>
+    <div>
+      <span class="section-label" data-es="04 — Empresa" data-en="04 — Company">04 — Empresa</span>
+      <h2 class="section-title"
+          data-es="Quiénes <em>somos</em>"
+          data-en="Who <em>we are</em>">
+        Quiénes <em>somos</em>
       </h2>
       <div class="divider"></div>
       <p class="section-body"
-         data-es="Cuéntanos sobre tu proyecto o empresa. Nuestro equipo se comunicará contigo en menos de 24 horas."
-         data-en="Tell us about your project or company. Our team will reach out within 24 hours.">
-        Cuéntanos sobre tu proyecto o empresa. Nuestro equipo se comunicará contigo en menos de 24 horas.
+         data-es="Somos un equipo de profesionales con visión global y raíces locales. Nuestro propósito es generar valor real para nuestros clientes, socios e inversores a través de soluciones que trascienden."
+         data-en="We are a team of professionals with global vision and local roots. Our purpose is to generate real value for our clients, partners and investors through solutions that transcend.">
+        Somos un equipo de profesionales con visión global y raíces locales. Nuestro propósito es generar valor real para nuestros clientes, socios e inversores a través de soluciones que trascienden.
       </p>
     </div>
+  </div>
+</section>
 
+<!-- ===== CONTACT ===== -->
+<section id="contacto">
+  <div class="inner">
+    <div>
+      <span class="section-label" data-es="05 — Contacto" data-en="05 — Contact">05 — Contacto</span>
+      <h2 class="section-title"
+          data-es="¿Listo para <em>comenzar?</em>"
+          data-en="Ready to <em>get started?</em>">
+        ¿Listo para <em>comenzar?</em>
+      </h2>
+      <div class="divider"></div>
+      <p class="section-body"
+         data-es="Cuéntanos sobre tu proyecto. Nuestro equipo se comunicará contigo en menos de 24 horas."
+         data-en="Tell us about your project. Our team will reach out within 24 hours.">
+        Cuéntanos sobre tu proyecto. Nuestro equipo se comunicará contigo en menos de 24 horas.
+      </p>
+    </div>
     <form class="contact-form" action="https://formspree.io/f/mbdwjgzz" method="POST">
       <div class="form-field">
         <label data-es="Nombre" data-en="Name">Nombre</label>
@@ -969,71 +1156,71 @@ footer p {
   </p>
 </footer>
 
-<!-- ===== SOCIAL SIDEBAR ===== -->
-<div class="social-sidebar">
-  <a href="#" class="linkedin" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-  <a href="#" class="instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
-  <a href="#" class="facebook" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+<!-- ===== WHATSAPP BUBBLE ===== -->
+<div class="whatsapp-bubble" id="waBubble">
+  <div class="wa-chat-box" id="waChatBox">
+    <div class="wa-avatar"><i class="fab fa-whatsapp"></i></div>
+    <div class="wa-text">
+      <strong data-es="¡Hola! 👋" data-en="Hi there! 👋">¡Hola! 👋</strong>
+      <span data-es="¿Tienes alguna pregunta? Hablemos." data-en="Have a question? Let's Talk.">¿Tienes alguna pregunta? Hablemos.</span>
+    </div>
+    <span class="wa-close" onclick="document.getElementById('waChatBox').classList.remove('show')">✕</span>
+  </div>
+  <a href="https://wa.me/123456789" class="wa-btn" title="WhatsApp" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+  </a>
 </div>
-
-<!-- ===== WHATSAPP ===== -->
-<a href="https://wa.me/123456789" class="whatsapp-float" title="WhatsApp">
-  <i class="fab fa-whatsapp"></i>
-</a>
 
 <!-- ===== SCRIPTS ===== -->
 <script>
 
-/* ---------- Custom Cursor ---------- */
+/* --- Custom Cursor --- */
 const cursor = document.getElementById('cursor');
 const follower = document.getElementById('cursorFollower');
 let mx = 0, my = 0, fx = 0, fy = 0;
-
 document.addEventListener('mousemove', e => {
   mx = e.clientX; my = e.clientY;
   cursor.style.transform = `translate(${mx - 4}px, ${my - 4}px)`;
 });
-
 function animateFollower() {
   fx += (mx - fx) * 0.12;
   fy += (my - fy) * 0.12;
-  follower.style.transform = `translate(${fx - 18}px, ${fy - 18}px)`;
+  follower.style.transform = `translate(${fx - 16}px, ${fy - 16}px)`;
   requestAnimationFrame(animateFollower);
 }
 animateFollower();
 
-/* ---------- Navbar scroll ---------- */
+/* --- Navbar scroll --- */
 window.addEventListener('scroll', () => {
   document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
 });
 
-/* ---------- Scroll reveal ---------- */
-const revealEls = document.querySelectorAll('.section, #services');
+/* --- Scroll reveal --- */
+const revealEls = document.querySelectorAll('.section, #services, #projects, #empresa, #contacto');
 const observer = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-}, { threshold: 0.08 });
+}, { threshold: 0.07 });
 revealEls.forEach(el => observer.observe(el));
 
-/* ---------- Language switcher ---------- */
-let lang = 'es';
+/* --- WhatsApp bubble: show after 3s --- */
+setTimeout(() => {
+  document.getElementById('waChatBox').classList.add('show');
+}, 3000);
 
+/* --- Language switcher --- */
 function setLang(l) {
-  lang = l;
   document.getElementById('btn-es').classList.toggle('active', l === 'es');
   document.getElementById('btn-en').classList.toggle('active', l === 'en');
-
-  // text content
   document.querySelectorAll('[data-es]').forEach(el => {
     const val = el.getAttribute('data-' + l);
     if (val !== null) el.innerHTML = val;
   });
-
-  // placeholders
   document.querySelectorAll('[data-placeholder-es]').forEach(el => {
     const val = el.getAttribute('data-placeholder-' + l);
     if (val) el.placeholder = val;
   });
 }
+
 </script>
 </body>
 </html>
