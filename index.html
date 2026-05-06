@@ -82,7 +82,7 @@ nav.scrolled {
   animation: navFade 0.8s ease 0.1s forwards;
 }
 .nav-logo img {
-  height: 70px;
+  height: 58px;
   width: auto;
   filter: none;
 }
@@ -93,17 +93,17 @@ nav.scrolled {
 }
 .nav-logo-text strong {
   font-family: 'DM Sans', sans-serif;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 700;
   color: #111;
   letter-spacing: -0.3px;
 }
 .nav-logo-text span {
-  font-size: 9px;
-  letter-spacing: 3px;
+  font-size: 10px;
+  letter-spacing: 2.5px;
   text-transform: uppercase;
   color: rgba(0,0,0,0.4);
-  margin-top: 3px;
+  margin-top: 4px;
   font-weight: 400;
 }
 
@@ -117,7 +117,7 @@ nav.scrolled {
 .nav-links a {
   color: rgba(0,0,0,0.6);
   text-decoration: none;
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 500;
   letter-spacing: 0.3px;
   transition: color 0.3s;
@@ -151,7 +151,7 @@ nav.scrolled {
 }
 .nav-socials a {
   color: rgba(0,0,0,0.4);
-  font-size: 14px;
+  font-size: 17px;
   text-decoration: none;
   transition: color 0.3s, transform 0.3s;
 }
@@ -211,16 +211,16 @@ nav.scrolled {
    HERO — framed video style
 =========================== */
 .hero-wrapper {
-  padding: 100px 40px 40px;
+  padding: 80px 0 0 0;
   background: #f5f5f3;
 }
 
 .hero {
   position: relative;
   width: 100%;
-  height: calc(100vh - 140px);
+  height: calc(100vh - 80px);
   min-height: 560px;
-  border-radius: 16px;
+  border-radius: 0;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -254,28 +254,31 @@ nav.scrolled {
   padding: 0 40px;
 }
 
-/* BIG initials — GTF S.A. */
+/* BIG initials — GTF  S.A. en una sola línea */
 .hero-title {
   font-family: 'DM Sans', sans-serif;
-  font-size: clamp(5rem, 14vw, 16rem);
+  font-size: clamp(4rem, 11vw, 13rem);
   font-weight: 800;
-  line-height: 0.9;
+  line-height: 1;
   color: rgba(255,255,255,0.92);
-  letter-spacing: -4px;
+  letter-spacing: -3px;
   opacity: 0;
   animation: heroReveal 2s cubic-bezier(0.22, 1, 0.36, 1) 0.5s forwards;
   pointer-events: none;
   user-select: none;
+  white-space: nowrap;
+  display: flex;
+  align-items: baseline;
+  gap: 0;
 }
 .hero-title .sa {
-  font-size: 0.38em;
+  font-size: 0.42em;
   font-weight: 300;
   font-family: 'Inter', sans-serif;
-  letter-spacing: 8px;
+  letter-spacing: 6px;
   color: rgba(255,255,255,0.55);
-  display: block;
-  margin-top: 10px;
-  text-align: center;
+  margin-left: 0.5em;
+  display: inline;
 }
 
 .hero-tagline {
@@ -828,8 +831,8 @@ footer p {
   <a href="#inicio" class="nav-logo">
     <img src="./logo.png" alt="GTF" onerror="this.style.display='none'">
     <div class="nav-logo-text">
-      <strong>Grupo Tierra Firme</strong>
-      <span>Grupo Empresarial S.A.</span>
+      <strong>Grupo Tierra Firme S.A.</strong>
+      <span>Grupo Empresarial</span>
     </div>
   </a>
 
@@ -902,7 +905,7 @@ footer p {
     <div class="hero-bottom">
       <div class="hero-bottom-left">
         <span data-es="Grupo Tierra Firme" data-en="Grupo Tierra Firme">Grupo Tierra Firme</span><br>
-        <span data-es="Panama · Est. 2009" data-en="Panama · Est. 2009">Panama · Est. 2009</span>
+        <span data-es="Colombia · Est. 2009" data-en="Colombia · Est. 2009">Colombia · Est. 2009</span>
       </div>
       <div class="hero-bottom-right">
         <span data-es="Construcción · Tecnología · Finanzas" data-en="Construction · Technology · Finance">Construcción · Tecnología · Finanzas</span><br>
@@ -949,7 +952,7 @@ footer p {
       </div>
     </div>
     <div class="about-image">
-      <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=900&q=80&auto=format&fit=crop"
+      <img src="https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=900&q=80&auto=format&fit=crop"
            alt="Grupo Tierra Firme — Quiénes somos">
     </div>
   </div>
@@ -1025,7 +1028,7 @@ footer p {
   </div>
 </section>
 
-<!-- ===== PROJECTS ===== -->
+<!-- ===== PROJECTS — 4 tarjetas verticales ===== -->
 <section id="projects">
   <div class="inner">
     <div class="header">
@@ -1036,35 +1039,98 @@ footer p {
         Nuestro <em>portafolio</em>
       </h2>
     </div>
-    <div class="projects-grid">
-      <div class="project-card">
-        <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&q=80&auto=format&fit=crop" alt="Proyecto 1">
-        <div class="project-card-info">
-          <div class="project-tag" data-es="Construcción · 2023" data-en="Construction · 2023">Construcción · 2023</div>
-          <div class="project-name" data-es="Torre Empresarial" data-en="Business Tower">Torre Empresarial </div>
+
+    <div class="portfolio-grid">
+
+      <!-- SALUD -->
+      <div class="portfolio-card" onclick="togglePortfolio(this)">
+        <div class="portfolio-front">
+          <img src="https://images.unsplash.com/photo-1559757175-5700dde675bc?w=600&q=80&auto=format&fit=crop" alt="Salud">
+          <div class="portfolio-front-overlay">
+            <div class="portfolio-icon">🏥</div>
+            <h3 class="portfolio-name" data-es="Salud y Distribución" data-en="Health & Distribution">Salud y Distribución</h3>
+            <span class="portfolio-hint" data-es="Ver más ↓" data-en="See more ↓">Ver más ↓</span>
+          </div>
+        </div>
+        <div class="portfolio-back">
+          <div class="portfolio-icon-sm">🏥</div>
+          <h3 data-es="Salud y Distribución" data-en="Health & Distribution">Salud y Distribución</h3>
+          <ul>
+            <li data-es="Distribución de insumos médicos" data-en="Medical supply distribution">Distribución de insumos médicos</li>
+            <li data-es="Equipos hospitalarios" data-en="Hospital equipment">Equipos hospitalarios</li>
+            <li data-es="Logística y abastecimiento" data-en="Logistics & supply">Logística y abastecimiento</li>
+          </ul>
+          <p data-es="Garantizamos acceso eficiente a productos de salud con altos estándares de calidad." data-en="We ensure efficient access to health products with high quality standards.">Garantizamos acceso eficiente a productos de salud con altos estándares de calidad.</p>
         </div>
       </div>
-      <div class="project-card">
-        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80&auto=format&fit=crop" alt="Proyecto 2">
-        <div class="project-card-info">
-          <div class="project-tag" data-es="Tecnología · 2024" data-en="Technology · 2024">Tecnología · 2024</div>
-          <div class="project-name" data-es="Plataforma Digital GTF" data-en="GTF Digital Platform">Plataforma Digital GTF</div>
+
+      <!-- CONSTRUCCIÓN -->
+      <div class="portfolio-card" onclick="togglePortfolio(this)">
+        <div class="portfolio-front">
+          <!-- Esta imagen la reemplazas con la tuya de GitHub: ./construccion.jpg -->
+          <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80&auto=format&fit=crop" alt="Construcción">
+          <div class="portfolio-front-overlay">
+            <div class="portfolio-icon">🏗️</div>
+            <h3 class="portfolio-name" data-es="Construcción y Desarrollo" data-en="Construction & Development">Construcción y Desarrollo</h3>
+            <span class="portfolio-hint" data-es="Ver más ↓" data-en="See more ↓">Ver más ↓</span>
+          </div>
+        </div>
+        <div class="portfolio-back">
+          <div class="portfolio-icon-sm">🏗️</div>
+          <h3 data-es="Construcción y Desarrollo" data-en="Construction & Development">Construcción y Desarrollo</h3>
+          <ul>
+            <li data-es="Ejecución de proyectos" data-en="Project execution">Ejecución de proyectos</li>
+            <li data-es="Remodelaciones" data-en="Renovations">Remodelaciones</li>
+            <li data-es="Infraestructura comercial y residencial" data-en="Commercial & residential infrastructure">Infraestructura comercial y residencial</li>
+          </ul>
+          <p data-es="Desarrollamos proyectos sólidos desde la planificación hasta la entrega." data-en="We develop solid projects from planning to delivery.">Desarrollamos proyectos sólidos desde la planificación hasta la entrega.</p>
         </div>
       </div>
-      <div class="project-card">
-        <img src="https://images.unsplash.com/photo-1559757175-5700dde675bc?w=800&q=80&auto=format&fit=crop" alt="Proyecto 3">
-        <div class="project-card-info">
-          <div class="project-tag" data-es="Salud · 2023" data-en="Healthcare · 2023">Salud · 2023</div>
-          <div class="project-name" data-es="Centro Médico Regional" data-en="Regional Medical Center">Centro Médico Regional</div>
+
+      <!-- TECNOLOGÍA -->
+      <div class="portfolio-card" onclick="togglePortfolio(this)">
+        <div class="portfolio-front">
+          <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80&auto=format&fit=crop" alt="Tecnología">
+          <div class="portfolio-front-overlay">
+            <div class="portfolio-icon">💻</div>
+            <h3 class="portfolio-name" data-es="Tecnología y Seguridad" data-en="Technology & Security">Tecnología y Seguridad</h3>
+            <span class="portfolio-hint" data-es="Ver más ↓" data-en="See more ↓">Ver más ↓</span>
+          </div>
+        </div>
+        <div class="portfolio-back">
+          <div class="portfolio-icon-sm">💻</div>
+          <h3 data-es="Tecnología y Seguridad" data-en="Technology & Security">Tecnología y Seguridad</h3>
+          <ul>
+            <li data-es="Sistemas de videovigilancia" data-en="Video surveillance systems">Sistemas de videovigilancia</li>
+            <li data-es="Centros de monitoreo" data-en="Monitoring centers">Centros de monitoreo</li>
+            <li data-es="Automatización y control" data-en="Automation & control">Automatización y control</li>
+          </ul>
+          <p data-es="Protegemos y optimizamos operaciones con soluciones tecnológicas avanzadas." data-en="We protect and optimize operations with advanced technology solutions.">Protegemos y optimizamos operaciones con soluciones tecnológicas avanzadas.</p>
         </div>
       </div>
-      <div class="project-card">
-        <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80&auto=format&fit=crop" alt="Proyecto 4">
-        <div class="project-card-info">
-          <div class="project-tag" data-es="Logística · 2024" data-en="Logistics · 2024">Logística · 2024</div>
-          <div class="project-name" data-es="Red de Distribución Nacional" data-en="National Distribution Network">Red de Distribución Nacional</div>
+
+      <!-- FINANZAS -->
+      <div class="portfolio-card" onclick="togglePortfolio(this)">
+        <div class="portfolio-front">
+          <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&q=80&auto=format&fit=crop" alt="Finanzas">
+          <div class="portfolio-front-overlay">
+            <div class="portfolio-icon">💰</div>
+            <h3 class="portfolio-name" data-es="Servicios Financieros" data-en="Financial Services">Servicios Financieros</h3>
+            <span class="portfolio-hint" data-es="Ver más ↓" data-en="See more ↓">Ver más ↓</span>
+          </div>
+        </div>
+        <div class="portfolio-back">
+          <div class="portfolio-icon-sm">💰</div>
+          <h3 data-es="Servicios Financieros" data-en="Financial Services">Servicios Financieros</h3>
+          <ul>
+            <li data-es="Financiamiento empresarial" data-en="Business financing">Financiamiento empresarial</li>
+            <li data-es="Estructuración de proyectos" data-en="Project structuring">Estructuración de proyectos</li>
+            <li data-es="Asesoría financiera" data-en="Financial advisory">Asesoría financiera</li>
+          </ul>
+          <p data-es="Impulsamos el crecimiento con soluciones financieras estratégicas." data-en="We drive growth with strategic financial solutions.">Impulsamos el crecimiento con soluciones financieras estratégicas.</p>
         </div>
       </div>
+
     </div>
   </div>
 </section>
@@ -1159,10 +1225,14 @@ footer p {
 <!-- ===== WHATSAPP BUBBLE ===== -->
 <div class="whatsapp-bubble" id="waBubble">
   <div class="wa-chat-box" id="waChatBox">
-    <div class="wa-avatar"><i class="fab fa-whatsapp"></i></div>
+    <div class="wa-avatar" style="background:none;padding:0;overflow:hidden;">
+      <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=80&h=80&q=80&auto=format&fit=crop&crop=face"
+           alt="Asesora GTF"
+           style="width:40px;height:40px;border-radius:50%;object-fit:cover;object-position:top;display:block;">
+    </div>
     <div class="wa-text">
-      <strong data-es="¡Hola! 👋" data-en="Hi there! 👋">¡Hola! 👋</strong>
-      <span data-es="¿Tienes alguna pregunta? Hablemos." data-en="Have a question? Let's Talk.">¿Tienes alguna pregunta? Hablemos.</span>
+      <strong data-es="¡Hola! 👋 ¿Tienes alguna pregunta?" data-en="Hi there! 👋 Have a question?">¡Hola! 👋 ¿Tienes alguna pregunta?</strong>
+      <span data-es="Hablemos por WhatsApp." data-en="Let's Talk on WhatsApp.">Hablemos por WhatsApp.</span>
     </div>
     <span class="wa-close" onclick="document.getElementById('waChatBox').classList.remove('show')">✕</span>
   </div>
