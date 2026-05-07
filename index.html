@@ -575,9 +575,11 @@ nav.scrolled {
   position: absolute;
   bottom: 0; left: 0; right: 0;
   padding: 28px 28px 24px;
-  background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%);
+  background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 100%);
   color: #fff;
+  transition: padding 0.4s ease;
 }
+.project-card:hover .project-card-info { padding-bottom: 32px; }
 .project-tag {
   font-size: 10px;
   letter-spacing: 3px;
@@ -590,8 +592,30 @@ nav.scrolled {
   font-size: 1.2rem;
   font-weight: 700;
   letter-spacing: -0.3px;
+  margin-bottom: 0;
+  transition: margin 0.4s ease;
 }
-
+.project-card:hover .project-name { margin-bottom: 10px; }
+.project-desc {
+  font-size: 13px;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.6;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+}
+.project-card:hover .project-desc { max-height: 120px; }
+.project-items {
+  list-style: none;
+  margin-top: 6px;
+}
+.project-items li {
+  font-size: 12px;
+  color: rgba(255,255,255,0.5);
+  padding: 2px 0;
+  letter-spacing: 0.3px;
+}
+.project-items li::before { content: "· "; }
 /* ===========================
    ABOUT COMPANY
 =========================== */
@@ -1040,120 +1064,76 @@ footer p {
       </h2>
     </div>
 
-    <div class="portfolio-grid">
+<div class="projects-grid">
 
       <!-- SALUD -->
-      <div class="portfolio-card" onclick="togglePortfolio(this)">
-        <div class="portfolio-front">
-          <img src="https://images.unsplash.com/photo-1559757175-5700dde675bc?w=600&q=80&auto=format&fit=crop" alt="Salud">
-          <div class="portfolio-front-overlay">
-            <div class="portfolio-icon">🏥</div>
-            <h3 class="portfolio-name" data-es="Salud y Distribución" data-en="Health & Distribution">Salud y Distribución</h3>
-            <span class="portfolio-hint" data-es="Ver más ↓" data-en="See more ↓">Ver más ↓</span>
+      <div class="project-card">
+        <img src="https://images.unsplash.com/photo-1559757175-5700dde675bc?w=800&q=80&auto=format&fit=crop" alt="Salud">
+        <div class="project-card-info">
+          <div class="project-tag" data-es="Salud y Distribución" data-en="Health & Distribution">Salud y Distribución</div>
+          <div class="project-name" data-es="Insumos médicos · Equipos · Logística" data-en="Medical supplies · Equipment · Logistics">Insumos médicos · Equipos · Logística</div>
+          <div class="project-desc">
+            <p data-es="Garantizamos acceso eficiente a productos de salud con altos estándares de calidad." data-en="We ensure efficient access to health products with high quality standards.">Garantizamos acceso eficiente a productos de salud con altos estándares de calidad.</p>
+            <ul class="project-items">
+              <li data-es="Distribución de insumos médicos" data-en="Medical supply distribution">Distribución de insumos médicos</li>
+              <li data-es="Equipos hospitalarios" data-en="Hospital equipment">Equipos hospitalarios</li>
+              <li data-es="Logística y abastecimiento" data-en="Logistics & supply">Logística y abastecimiento</li>
+            </ul>
           </div>
-        </div>
-        <div class="portfolio-back">
-          <div class="portfolio-icon-sm">🏥</div>
-          <h3 data-es="Salud y Distribución" data-en="Health & Distribution">Salud y Distribución</h3>
-          <ul>
-            <li data-es="Distribución de insumos médicos" data-en="Medical supply distribution">Distribución de insumos médicos</li>
-            <li data-es="Equipos hospitalarios" data-en="Hospital equipment">Equipos hospitalarios</li>
-            <li data-es="Logística y abastecimiento" data-en="Logistics & supply">Logística y abastecimiento</li>
-          </ul>
-          <p data-es="Garantizamos acceso eficiente a productos de salud con altos estándares de calidad." data-en="We ensure efficient access to health products with high quality standards.">Garantizamos acceso eficiente a productos de salud con altos estándares de calidad.</p>
         </div>
       </div>
 
       <!-- CONSTRUCCIÓN -->
-      <div class="portfolio-card" onclick="togglePortfolio(this)">
-        <div class="portfolio-front">
-          <!-- Esta imagen la reemplazas con la tuya de GitHub: ./construccion.jpg -->
-          <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80&auto=format&fit=crop" alt="Construcción">
-          <div class="portfolio-front-overlay">
-            <div class="portfolio-icon">🏗️</div>
-            <h3 class="portfolio-name" data-es="Construcción y Desarrollo" data-en="Construction & Development">Construcción y Desarrollo</h3>
-            <span class="portfolio-hint" data-es="Ver más ↓" data-en="See more ↓">Ver más ↓</span>
+      <div class="project-card">
+        <img src="./torres empresariales.png" alt="Construcción">
+        <div class="project-card-info">
+          <div class="project-tag" data-es="Construcción y Desarrollo" data-en="Construction & Development">Construcción y Desarrollo</div>
+          <div class="project-name" data-es="Proyectos · Remodelaciones · Infraestructura" data-en="Projects · Renovations · Infrastructure">Proyectos · Remodelaciones · Infraestructura</div>
+          <div class="project-desc">
+            <p data-es="Desarrollamos proyectos sólidos desde la planificación hasta la entrega." data-en="We develop solid projects from planning to delivery.">Desarrollamos proyectos sólidos desde la planificación hasta la entrega.</p>
+            <ul class="project-items">
+              <li data-es="Ejecución de proyectos" data-en="Project execution">Ejecución de proyectos</li>
+              <li data-es="Remodelaciones" data-en="Renovations">Remodelaciones</li>
+              <li data-es="Infraestructura comercial y residencial" data-en="Commercial & residential infrastructure">Infraestructura comercial y residencial</li>
+            </ul>
           </div>
-        </div>
-        <div class="portfolio-back">
-          <div class="portfolio-icon-sm">🏗️</div>
-          <h3 data-es="Construcción y Desarrollo" data-en="Construction & Development">Construcción y Desarrollo</h3>
-          <ul>
-            <li data-es="Ejecución de proyectos" data-en="Project execution">Ejecución de proyectos</li>
-            <li data-es="Remodelaciones" data-en="Renovations">Remodelaciones</li>
-            <li data-es="Infraestructura comercial y residencial" data-en="Commercial & residential infrastructure">Infraestructura comercial y residencial</li>
-          </ul>
-          <p data-es="Desarrollamos proyectos sólidos desde la planificación hasta la entrega." data-en="We develop solid projects from planning to delivery.">Desarrollamos proyectos sólidos desde la planificación hasta la entrega.</p>
         </div>
       </div>
 
       <!-- TECNOLOGÍA -->
-      <div class="portfolio-card" onclick="togglePortfolio(this)">
-        <div class="portfolio-front">
-          <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80&auto=format&fit=crop" alt="Tecnología">
-          <div class="portfolio-front-overlay">
-            <div class="portfolio-icon">💻</div>
-            <h3 class="portfolio-name" data-es="Tecnología y Seguridad" data-en="Technology & Security">Tecnología y Seguridad</h3>
-            <span class="portfolio-hint" data-es="Ver más ↓" data-en="See more ↓">Ver más ↓</span>
+      <div class="project-card">
+        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80&auto=format&fit=crop" alt="Tecnología">
+        <div class="project-card-info">
+          <div class="project-tag" data-es="Tecnología y Seguridad" data-en="Technology & Security">Tecnología y Seguridad</div>
+          <div class="project-name" data-es="Videovigilancia · Monitoreo · Automatización" data-en="Surveillance · Monitoring · Automation">Videovigilancia · Monitoreo · Automatización</div>
+          <div class="project-desc">
+            <p data-es="Protegemos y optimizamos operaciones con soluciones tecnológicas avanzadas." data-en="We protect and optimize operations with advanced technology solutions.">Protegemos y optimizamos operaciones con soluciones tecnológicas avanzadas.</p>
+            <ul class="project-items">
+              <li data-es="Sistemas de videovigilancia" data-en="Video surveillance systems">Sistemas de videovigilancia</li>
+              <li data-es="Centros de monitoreo" data-en="Monitoring centers">Centros de monitoreo</li>
+              <li data-es="Automatización y control" data-en="Automation & control">Automatización y control</li>
+            </ul>
           </div>
-        </div>
-        <div class="portfolio-back">
-          <div class="portfolio-icon-sm">💻</div>
-          <h3 data-es="Tecnología y Seguridad" data-en="Technology & Security">Tecnología y Seguridad</h3>
-          <ul>
-            <li data-es="Sistemas de videovigilancia" data-en="Video surveillance systems">Sistemas de videovigilancia</li>
-            <li data-es="Centros de monitoreo" data-en="Monitoring centers">Centros de monitoreo</li>
-            <li data-es="Automatización y control" data-en="Automation & control">Automatización y control</li>
-          </ul>
-          <p data-es="Protegemos y optimizamos operaciones con soluciones tecnológicas avanzadas." data-en="We protect and optimize operations with advanced technology solutions.">Protegemos y optimizamos operaciones con soluciones tecnológicas avanzadas.</p>
         </div>
       </div>
 
       <!-- FINANZAS -->
-      <div class="portfolio-card" onclick="togglePortfolio(this)">
-        <div class="portfolio-front">
-          <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&q=80&auto=format&fit=crop" alt="Finanzas">
-          <div class="portfolio-front-overlay">
-            <div class="portfolio-icon">💰</div>
-            <h3 class="portfolio-name" data-es="Servicios Financieros" data-en="Financial Services">Servicios Financieros</h3>
-            <span class="portfolio-hint" data-es="Ver más ↓" data-en="See more ↓">Ver más ↓</span>
+      <div class="project-card">
+        <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&q=80&auto=format&fit=crop" alt="Finanzas">
+        <div class="project-card-info">
+          <div class="project-tag" data-es="Servicios Financieros" data-en="Financial Services">Servicios Financieros</div>
+          <div class="project-name" data-es="Financiamiento · Estructuración · Asesoría" data-en="Financing · Structuring · Advisory">Financiamiento · Estructuración · Asesoría</div>
+          <div class="project-desc">
+            <p data-es="Impulsamos el crecimiento con soluciones financieras estratégicas." data-en="We drive growth with strategic financial solutions.">Impulsamos el crecimiento con soluciones financieras estratégicas.</p>
+            <ul class="project-items">
+              <li data-es="Financiamiento empresarial" data-en="Business financing">Financiamiento empresarial</li>
+              <li data-es="Estructuración de proyectos" data-en="Project structuring">Estructuración de proyectos</li>
+              <li data-es="Asesoría financiera" data-en="Financial advisory">Asesoría financiera</li>
+            </ul>
           </div>
-        </div>
-        <div class="portfolio-back">
-          <div class="portfolio-icon-sm">💰</div>
-          <h3 data-es="Servicios Financieros" data-en="Financial Services">Servicios Financieros</h3>
-          <ul>
-            <li data-es="Financiamiento empresarial" data-en="Business financing">Financiamiento empresarial</li>
-            <li data-es="Estructuración de proyectos" data-en="Project structuring">Estructuración de proyectos</li>
-            <li data-es="Asesoría financiera" data-en="Financial advisory">Asesoría financiera</li>
-          </ul>
-          <p data-es="Impulsamos el crecimiento con soluciones financieras estratégicas." data-en="We drive growth with strategic financial solutions.">Impulsamos el crecimiento con soluciones financieras estratégicas.</p>
         </div>
       </div>
 
-    </div>
-  </div>
-</section>
-
-<!-- ===== EMPRESA ===== -->
-<section id="empresa">
-  <div class="inner">
-    <div class="empresa-image">
-      <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=800&q=80&auto=format&fit=crop" alt="Nuestro equipo">
-    </div>
-    <div>
-      <span class="section-label" data-es="04 — Empresa" data-en="04 — Company">04 — Empresa</span>
-      <h2 class="section-title"
-          data-es="Quiénes <em>somos</em>"
-          data-en="Who <em>we are</em>">
-        Quiénes <em>somos</em>
-      </h2>
-      <div class="divider"></div>
-      <p class="section-body"
-         data-es="Somos un equipo de profesionales con visión global y raíces locales. Nuestro propósito es generar valor real para nuestros clientes, socios e inversores a través de soluciones que trascienden."
-         data-en="We are a team of professionals with global vision and local roots. Our purpose is to generate real value for our clients, partners and investors through solutions that transcend.">
-        Somos un equipo de profesionales con visión global y raíces locales. Nuestro propósito es generar valor real para nuestros clientes, socios e inversores a través de soluciones que trascienden.
-      </p>
     </div>
   </div>
 </section>
@@ -1226,7 +1206,7 @@ footer p {
 <div class="whatsapp-bubble" id="waBubble">
   <div class="wa-chat-box" id="waChatBox">
     <div class="wa-avatar" style="background:none;padding:0;overflow:hidden;">
-      <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=80&h=80&q=80&auto=format&fit=crop&crop=face"
+      <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=80&h=80&q=80&auto=format&fit=crop&crop=face"
            alt="Asesora GTF"
            style="width:40px;height:40px;border-radius:50%;object-fit:cover;object-position:top;display:block;">
     </div>
